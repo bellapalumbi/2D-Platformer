@@ -14,11 +14,18 @@ public class PlayerMovement : MonoBehaviour {
 	
 
 	void Update () {
-		if (Input.GetKeyDown ("space") || Input.GetKeyDown(KeyCode.W)) {
-			Debug.Log("jump pressed");
+		if (Input.GetKeyDown ("space")) {
+			Jump();
+		}
+		if (Input.GetKeyDown( KeyCode.W)) {
+			Jump();
 		}
 	}
 
+	void Jump() {
+		Debug.Log("jump");
+		rb.AddForce(transform.up * thrust);
+	}
 	void MoveLeft() {
 		
 	}
