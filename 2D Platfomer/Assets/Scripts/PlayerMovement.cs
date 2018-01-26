@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public Rigidbody2D rb;
+	public Rigidbody2D player_rb;
 	public float thrust;
-	//private Vector2 = (10,10);
+	
 
 	void Start () {
 		//rb.AddForce (transform.up * thrust);
@@ -14,17 +14,18 @@ public class PlayerMovement : MonoBehaviour {
 	
 
 	void Update () {
-		if (Input.GetKeyDown ("space")) {
-			Jump();
-		}
-		if (Input.GetKeyDown( KeyCode.W)) {
-			Jump();
+		if (Input.GetKeyDown ("space") || Input.GetKeyDown( KeyCode.W) == true) {
+			print("jump");
+			Debug.DrawRay(transform.position, -Vector2.up, Color.cyan);
+			if(Physics2D.Raycast(transform.position, -Vector2.up)) {
+				Jump();
+			}
 		}
 	}
 
 	void Jump() {
 		Debug.Log("jump");
-		rb.AddForce(transform.up * thrust);
+		player_rb.AddForce(transform.up * thrust);
 	}
 	void MoveLeft() {
 		
