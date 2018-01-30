@@ -5,16 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	public Rigidbody2D player_rb;
-	public float thrust;
+	public float jumpThrust = 180;
+	public float moveThrust;
 
 	public Vector2 blinkVelocity;
-	public float speedMultiplier = 10;
+//	public float speedMultiplier = 10;
 
 	public RaycastHit2D hit;
 	
 
 	void Start () {
-		//rb.AddForce (transform.up * thrust);
+		player_rb = GetComponent<Rigidbody2D>();
+		moveThrust = 10;
 	}
 	
 
@@ -49,15 +51,16 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Jump() {
 		Debug.Log("jump");
-		player_rb.AddForce(transform.up * thrust);
+		player_rb.AddForce(transform.up * jumpThrust);
 	}
 	void MoveLeft() {
 		Debug.Log( "Move Left called");
-		player_rb.MovePosition(player_rb.position + blinkVelocity * Time.deltaTime);
+		//player_rb.MovePosition(player_rb.position + blinkVelocity * Time.deltaTime*2);
+		player_rb.AddForce(new Vector2(-1, 0) * moveThrust);
 	}
 
 	void MoveRight() {
-		player_rb.MovePosition(player_rb.position + blinkVelocity * Time.deltaTime);
+		player_rb.AddForce(new Vector2(1,0) * moveThrust);
 	}
 
 }
