@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour {
 //	public float speedMultiplier = 10;
 
 	public RaycastHit2D hit;
+	public SpriteRenderer spriteRenderer;
 	
 
 	void Start () {
 		player_rb = GetComponent<Rigidbody2D>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 		moveThrust = 10;
 	}
 	
@@ -57,10 +59,12 @@ public class PlayerMovement : MonoBehaviour {
 		Debug.Log( "Move Left called");
 		//player_rb.MovePosition(player_rb.position + blinkVelocity * Time.deltaTime*2);
 		player_rb.AddForce(new Vector2(-1, 0) * moveThrust);
+		spriteRenderer.flipX = false;
 	}
 
 	void MoveRight() {
 		player_rb.AddForce(new Vector2(1,0) * moveThrust);
+		spriteRenderer.flipX = true;
 	}
 
 }
