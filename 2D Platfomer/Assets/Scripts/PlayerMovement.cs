@@ -23,8 +23,9 @@ public class PlayerMovement : MonoBehaviour {
 	
 
 	void Update () {
-		if (Input.GetKeyDown ("space") || Input.GetKeyDown( KeyCode.W) == true) { //if space or w pressed
+		if (Input.GetKeyDown ("space") || Input.GetKeyDown( KeyCode.UpArrow) == true) { //if space or w pressed
 			print("jump");
+			
 			//Debug.DrawRay(new Vector2(transform.position.x, transform.position.y-.2f), -Vector2.up, Color.cyan);
 			hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y-0.2f), -Vector2.up,0.1f);
 				//Send a raycast with a length of 0.1 from just below the player's position downward (opp of up)
@@ -38,13 +39,13 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey(KeyCode.A)) {
+		if (Input.GetKey(KeyCode.LeftArrow)) {
 			//print("A pressed");
 			blinkVelocity = new Vector2(-1,0);
 			MoveLeft();
 		}
 
-		if (Input.GetKey(KeyCode.D)) {
+		if (Input.GetKey(KeyCode.RightArrow)) {
 			blinkVelocity = new Vector2(1,0);
 			MoveRight();
 		}
